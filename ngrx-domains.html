@@ -1,0 +1,239 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+  <meta charset="utf-8">
+  <title>NgRx Domains</title>
+  <meta name="description" content="">
+  <meta name="author" content="Hernán De Souza">
+  <meta name="apple-mobile-web-app-capable" content="yes" />
+  <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, minimal-ui">
+  <link rel="stylesheet" href="../revealjs/css/reveal.css">
+  <link rel="stylesheet" href="../revealjs/css/theme/black.css" id="theme">
+  <link rel="stylesheet" href="css/aurelia.css" <!-- Code syntax highlighting -->
+  <link rel="stylesheet" href="../revealjs/lib/css/zenburn.css">
+  <!-- Printing and PDF exports -->
+  <script>
+    var link = document.createElement('link');
+    link.rel = 'stylesheet';
+    link.type = 'text/css';
+    link.href = window.location.search.match(/print-pdf/gi) ? '../revealjs/css/print/pdf.css' :
+      '../revealjs/css/print/paper.css';
+    document.getElementsByTagName('head')[0].appendChild(link);
+
+  </script>
+  <!--[if lt IE 9]>
+    <script src="lib/js/html5shiv.js"></script>
+    <![endif]-->
+</head>
+
+<body>
+  <div class="reveal">
+    <!-- Any section element inside of this container is displayed as a slide -->
+    <div class="slides">
+      <!-- Slide 1-->
+      <section>
+        <h1 style="display:inline-block;">NgRx Domains </h1>
+        <h3>Angular2 + Redux + LazyLoad.</h3>
+        <img class="logo" src="img/yo.png" style="height: 150px; display: inline-block;">
+        <p>
+          Presentado por <a href="http://github.com/H3rN4n">Guillermo Hernán De Souza</a>
+        </p>
+        <img src="img/bela.png" alt="" style="max-height: 100px;">
+      </section>
+      <!-- Slide 2-->
+      <section>
+        <section>
+          <img src="img/redux-logo.png" alt="" style="max-height: 100px;     border: none;">
+          <h2>¿Que es Redux?</h2>
+          <p>
+            Es una herramienta que utiliza el patrón flux y tiene algunas diferencias
+          </p>
+          <ul>
+            <li>Redux uses only one store</li>
+            <li>State is Read-Only <br>
+              "The only way to mutate the state is to emit an action, an object describing what happened."
+            </li>
+            <li>Changes are made with Pure Functions</li>
+          </ul>
+        </section>
+        <section>
+          <img src="img/flux-logo.png" alt="" style="max-height: 100px;     border: none;">
+          <h2>¿Que es Flux?</h2>
+          <p>
+            Es una arquitectura para aplicaciones donde el flujo de datos se maneja en una sola dirección.
+          </p>
+          <img src="img/flux-flow.png" alt="" style="border: none;">
+        </section>
+        <section>
+          <img src="img/redux-flow.svg" alt="" style="border: none;">
+        </section>
+        <!-- Slide 3-->
+        <section>
+          <h2>¿Porque elegimos redux?</h2>
+        </section>
+        <section>
+          <img src="img/with&without.svg" alt="" style="border: none;">
+        </section>
+        <section>
+          <img src="img/redux-flow.gif" alt="" style="border: none;">
+        </section>
+      </section>
+      <!-- Slide 4-->
+      <!-- Example of nested vertical slides -->
+      <section>
+        <section>
+          <h2>Estructura de archivos</h2>
+          <p>Podemos elegir 2 tipos de estructuras
+            <ul>
+              <li>Por Funcionalidad</li>
+              <li>Por Role de Redux</li>
+            </ul>
+          </p>
+        </section>
+        <section>
+          <h2>Por Funcionalidad</h2>
+          <img src="img/by-feature.png" alt="" style="width: 100%;">
+        </section>
+        <section>
+          <h2>Por Redux</h2>
+          <img src="img/by-redux.png" alt="" style="width: 100%;">
+        </section>
+        <section>
+          <h2>Lazy Load</h2>
+          <p>
+            Angular 2 hace sensillo el uso de lazy load, mediante la definición en el modulo de rutas podemos darle un entrypoint y va
+            a cargar el modulo on demand.
+          </p>
+          <img src="img/lazyLoadExample.png" alt="" style="border: none;">
+        </section>
+        <section>
+          <h3>ngrx-domains</h3>
+          <p>
+            Es un plugin orientado a resolver esto de una manera simple.
+          </p>
+          <p>Internamente tiene un observable que emite un evento
+            cuando un nuevo dominio es registrado y create el árbol de reducers de nuevo.</p>
+        </section>
+        <section>
+          <img src="img/ngrx-domains-main-reducer.png" alt="" style="width: 100%;">
+        </section>
+      </section>
+      <section>
+        <section>
+          <h2>Dominios</h2>
+          <p>Un dominio es un namespace que encapsula el feature y permite acceso desde cualquier parte sin referencias expecificas.</p>
+        </section>
+        <section>
+          <h2>Detalle de un Dominio</h3>
+            <p>Cada Dominio de redux es una unidad responsable de: </p>
+            <ul>
+              <li>Publicarse a si mismo</li>
+              <li>Publicar su información</li>
+              <li>Publicar sus acciones</li>
+              <li>Administrar la logica de si mismo (reducers)</li>
+              <li>Publicar consultas a puntos del state (opcional) </li>
+              <li>Publicar modelos (opcional)</li>
+            </ul>
+        </section>
+      </section>
+      <section>
+        <section>
+          <h2>Redux Devtool</h2>
+          <p>Está disponible para Google Chrome y entre sus Funcionalidades se destacan</p>
+          <ul>
+            <li>Exportar e Importar secuencias de eventos</li>
+            <li>Reproducir la secuencia</li>
+            <li>Cambiar el orden de los eventos</li>
+            <li>Ver estado del Store con cada evento emitido</li>
+          </ul>
+        </section>
+      </section>
+      <section>
+        <section>
+          <h2>Testing</h2>
+          <p>En angular 2 es común hacer test de componentes y servicios, ahora tambien debemos agregar test para reducers, acciones y effects</p>
+        </section>
+        <section>
+          <h3>Testing de una acción</h3>
+          <img src="img/testing-domain-action.png" alt="" style="width: 100%;">
+        </section>
+        <section>
+          <h3>Testing de un Reducer</h3>
+          <img src="img/testing-domain-reducer.png" alt="" style="width: 100%;">
+        </section>
+        <section>
+          <h2>Testing de un Effect</h2>
+        </section>
+      </section>
+      <section>
+        <div style="width: 100%; height: 220px;">
+          <div style="width: 80%; display: inline-block; float: right;">
+            <img src="img/bela.png" alt="" style="width: 100%; max-height: 200px;">
+          </div>
+          <div style="width: 17%; display: inline-block;  float: left;">
+            <img src="img/yo.png" alt="" style="width: 100%; max-height: 200px;">
+          </div>
+        </div>
+        <ul>
+          <li>Hernán De Souza</li>
+          <li>Sr Frontend Developer</li>
+          <li>Grupo de Facebook: FrontoDevs</li>
+          <li>Skype: desouza03</li>
+          <li>Github: github.com/H3rN4n</li>
+        </ul>
+      </section>
+    </div>
+  </div>
+  <script src="../revealjs/lib/js/head.min.js"></script>
+  <script src="../revealjs/js/reveal.js"></script>
+  <script>
+    // Full list of configuration options available at:
+    // https://github.com/hakimel/reveal.js#configuration
+    Reveal.initialize({
+      controls: true,
+      progress: true,
+      history: true,
+      center: true,
+
+      transition: 'convex', // none/fade/slide/convex/concave/zoom
+
+      // Optional reveal.js plugins
+      dependencies: [{
+        src: '../revealjs/lib/js/classList.js',
+        condition: function () {
+          return !document.body.classList;
+        }
+      }, {
+        src: '../revealjs/plugin/markdown/marked.js',
+        condition: function () {
+          return !!document.querySelector('[data-markdown]');
+        }
+      }, {
+        src: '../revealjs/plugin/markdown/markdown.js',
+        condition: function () {
+          return !!document.querySelector('[data-markdown]');
+        }
+      }, {
+        src: '../revealjs/plugin/highlight/highlight.js',
+        async: true,
+        condition: function () {
+          return !!document.querySelector('pre code');
+        },
+        callback: function () {
+          hljs.initHighlightingOnLoad();
+        }
+      }, {
+        src: '../revealjs/plugin/zoom-js/zoom.js',
+        async: true
+      }, {
+        src: '../revealjs/plugin/notes/notes.js',
+        async: true
+      }]
+    });
+
+  </script>
+</body>
+
+</html>
