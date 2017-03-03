@@ -34,7 +34,7 @@
     <div class="slides">
       <!-- Slide 1-->
       <section>
-        <h1 style="display:inline-block;">NgRx Domains </h1>
+        <h1 style="display:inline-block;">NgRx Domains</h1>
         <h3>Angular2 + Redux + LazyLoad.</h3>
         <img class="logo" src="img/yo.png" style="height: 150px; display: inline-block;">
         <p>
@@ -42,22 +42,19 @@
         </p>
         <img src="img/bela.png" alt="" style="max-height: 100px;">
       </section>
+      <section>
+        <h2>Agenda</h2>
+        <ul>
+          <li>Flux</li>
+          <li>Redux</li>
+          <li>Rxjs</li>
+          <li>NgRx</li>
+          <li>Lazy Load</li>
+          <li>Testing</li>
+        </ul>
+      </section>
       <!-- Slide 2-->
       <section>
-        <section>
-          <img src="img/redux-logo.png" alt="" style="max-height: 100px;     border: none;">
-          <h2>¿Que es Redux?</h2>
-          <p>
-            Es una herramienta que utiliza el patrón flux y tiene algunas diferencias
-          </p>
-          <ul>
-            <li>Redux uses only one store</li>
-            <li>State is Read-Only <br>
-              "The only way to mutate the state is to emit an action, an object describing what happened."
-            </li>
-            <li>Changes are made with Pure Functions</li>
-          </ul>
-        </section>
         <section>
           <img src="img/flux-logo.png" alt="" style="max-height: 100px;     border: none;">
           <h2>¿Que es Flux?</h2>
@@ -67,11 +64,25 @@
           <img src="img/flux-flow.png" alt="" style="border: none;">
         </section>
         <section>
+          <img src="img/redux-logo.png" alt="" style="max-height: 100px;     border: none;">
+          <h2>¿Que es Redux?</h2>
+          <p>
+            Es una herramienta que utiliza el patrón flux y tiene algunas diferencias
+          </p>
+          <ul>
+            <li>Redux usa un solo store</li>
+            <li>Los states son solo lectura <br> "La unica manera de mutar un state es emitiendo una acción, y un objecto describiendo
+              que está pasando"
+            </li>
+            <li>Los cambios se realizan con funciones puras</li>
+          </ul>
+        </section>
+        <section>
           <img src="img/redux-flow.svg" alt="" style="border: none;">
         </section>
         <!-- Slide 3-->
         <section>
-          <h2>¿Porque elegimos redux?</h2>
+          <h2>¿Porque elegimos Redux?</h2>
         </section>
         <section>
           <img src="img/with&without.svg" alt="" style="border: none;">
@@ -80,26 +91,68 @@
           <img src="img/redux-flow.gif" alt="" style="border: none;">
         </section>
       </section>
-      <!-- Slide 4-->
-      <!-- Example of nested vertical slides -->
       <section>
         <section>
           <h2>Estructura de archivos</h2>
-          <p>Podemos elegir 2 tipos de estructuras
-            <ul>
-              <li>Por Funcionalidad</li>
-              <li>Por Role de Redux</li>
-            </ul>
-          </p>
+          <p>Podemos elegir 2 tipos de estructuras</p>
+          <ul>
+            <li>Por Funcionalidad</li>
+            <li>Por Role de Redux</li>
+          </ul>
         </section>
         <section>
           <h2>Por Funcionalidad</h2>
           <img src="img/by-feature.png" alt="" style="width: 100%;">
         </section>
         <section>
-          <h2>Por Redux</h2>
+          <h2>Por rol en Redux</h2>
           <img src="img/by-redux.png" alt="" style="width: 100%;">
         </section>
+      </section>
+      <section>
+        <section>
+          <img src="img/rxjs.png" alt="" style="max-height: 100px;     border: none;">
+          <h2>¿Que es Rxjs?</h2>
+          <p>Es un conjunto de libreria para aplicaciones asincronas basadas en eventos usando secuencias de observables</p>
+        </section>
+        <section>
+          <h2>¿Que es un observable?</h2>
+          <p>Un Observable representa una colección de valores en un periodo de tiempo a los que se pueden acceder como si fuesen
+            arrays.
+          </p>
+          <img src="img/observable-just.png" alt="" style="max-height: 250px;     border: none;"><br>
+        </section>
+        <section>
+          <h2>Conclusión</h2>
+          <p>RxJS seria como underscore o lodash para operaciones asincronas!</p>
+          <a href="http://rxmarbles.com/" target="_blank">Ver ejemplos</a>
+        </section>
+        <section>
+          <h2>¿Que es NgRx?</h2>
+          <p>Son implementaciones de Rxjs para Angular</p>
+          <ul>
+            <li>Store</li>
+            <li>Router Store</li>
+            <li>Effects</li>
+            <li>Devtool</li>
+            <li>Domains (Shlomi Assaf)</li>
+            <li>...</li>
+          </ul>
+        </section>
+        <section>
+          <h2>NGRX STORE</h2>
+          <p>Es una libreria para menejar los estados de la aplicación inspirado por Redux</p>
+        </section>
+        <section>
+          <h2>NGRX ROUTER STORE</h2>
+          <p>Es una libreria que conecta el router de angular con el store</p>
+        </section>
+        <section>
+          <h2>NGRX Effects</h2>
+          <p>Es una forma elegante y funcional de encadenar acciones que dependen de otras</p>
+        </section>
+      </section>
+      <section>
         <section>
           <h2>Lazy Load</h2>
           <p>
@@ -109,18 +162,16 @@
           <img src="img/lazyLoadExample.png" alt="" style="border: none;">
         </section>
         <section>
-          <h3>ngrx-domains</h3>
+          <h2>NGRX-DOMAINS</h2>
           <p>
             Es un plugin orientado a resolver esto de una manera simple.
           </p>
-          <p>Internamente tiene un observable que emite un evento
-            cuando un nuevo dominio es registrado y re crea el árbol de reducers de nuevo.</p>
+          <p>Internamente tiene un observable que emite un evento cuando un nuevo dominio es registrado y re crea el árbol de
+            reducers de nuevo.</p>
         </section>
         <section>
           <img src="img/ngrx-domains-main-reducer.png" alt="" style="width: 100%;">
         </section>
-      </section>
-      <section>
         <section>
           <h2>Dominios</h2>
           <p>Un dominio es un namespace que encapsula el feature y permite acceso desde cualquier parte sin referencias especificas.</p>
@@ -153,7 +204,8 @@
       <section>
         <section>
           <h2>Testing</h2>
-          <p>En angular 2 es común hacer test de componentes y servicios, ahora tambien debemos agregar test para reducers, acciones y effects</p>
+          <p>En angular 2 es común hacer test de componentes y servicios, ahora tambien debemos agregar test para reducers,
+            acciones y effects</p>
         </section>
         <section>
           <h3>Testing de una acción</h3>
@@ -165,7 +217,9 @@
         </section>
         <section>
           <h2>Testing de un Effect</h2>
-          <p>Para hacer test de un effect debemos seguir estos pasos, agregando los mocks necesarios para poder instanciar nuestro servicio.</p>
+          <p>Para hacer test de un effect debemos seguir estos pasos, agregando los mocks necesarios para poder instanciar nuestro
+            servicio.
+          </p>
           <a href="https://github.com/ngrx/effects/blob/master/docs/testing.md" target="_blank">Tutorial</a>
         </section>
       </section>
